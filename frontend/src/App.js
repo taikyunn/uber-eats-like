@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './app.css';
+import{
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
-function App() {
+// Componets
+
+import {Restaurants} from './containers/Restaurants.jsx';
+import {Foods} from './containers/Foods.jsx';
+import {Orders} from './containers/Orders.jsx';
+
+function App(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          テスト
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <Switch>
+        {/* 店舗一覧ページ */}
+        <Route
+        exact
+        path = "/restaurants">
+        <Restaurants />
+        </Route>
+
+        {/* フード一覧ページ */}
+        <Route
+        exact
+        path = "/foods"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <Foods />
+      </Route>
+
+      <Route
+      exact
+      path = "/orders">
+        <Orders />
+      </Route>
+    </Switch>
+  </Router>
   );
 }
 
